@@ -1,0 +1,2 @@
+-> File: WEB_INF\zk.xml
+	- Crear el archivo para la configuracion del <error-page>

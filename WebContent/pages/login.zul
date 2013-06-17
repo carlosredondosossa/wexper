@@ -1,0 +1,16 @@
+
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?page title=""?>
+
+<?script type="text/javascript" src="/js/jquery-1.4.2.js" ?>
+<?script type="text/javascript" src="/js/menu.js" ?>
+
+<?link type="text/css" rel="stylesheet" href="/css/style.css" ?>
+
+<?script ?>
+
+<window title="Hello World!!!!!!!!!!!!!!!!!!!!!!" border="normal" width="200px">
+
+	<label value="You are using: ${desktop.webApp.version}"/>
+
+</window>
