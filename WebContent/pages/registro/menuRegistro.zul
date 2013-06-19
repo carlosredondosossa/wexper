@@ -1,0 +1,29 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<?page title="WEXPER" contentType="text/html;charset=UTF-8"?>
+
+<?link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700" rel="stylesheet" type="text/css" ?>
+<?link type="text/css" rel="stylesheet" href="/assets/css/style.css" ?>
+
+<zk>
+	
+	<div sclass="wrapper" style="background-image: url('../assets/img/fondo.jpg');" >
+		<custom-attributes org.zkoss.zul.image.preload="true" />
+		
+		
+		<label value="AAAAAAA"></label>
+<!-- 		<div sclass="header" > -->
+		
+<!-- 		</div> -->
+		
+<!-- 		<div sclass="body" > -->
+		
+<!-- 		</div> -->
+		
+<!-- 		<div sclass="footer" > -->
+		
+<!-- 		</div> -->
+	
+	</div>
+
+</zk>
