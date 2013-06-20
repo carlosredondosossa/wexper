@@ -1,0 +1,63 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+	<context:component-scan base-package="vista" />
+
+	<!-- MVC -->
+	<mvc:annotation-driven />
+	<mvc:resources location="/assets/css/" mapping="/assets/css/**" />
+	<mvc:resources location="/assets/img/" mapping="/assets/img/**" />
+	<mvc:default-servlet-handler />
+
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://localhost/wexper" />
+		<property name="username" value="admin" />
+		<property name="password" value="admin" />
+	</bean>
+
+	<bean id="accessDeniedHandler"
+		class="handler.MyAccessDeniedHandler">
+		<property name="accessDeniedUrl" value="403" />
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.zul</value>
+		</property>
+	</bean>
+
+
+	<tx:annotation-driven />
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="wexper" />
+	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<!-- CLIENTES -->
+<!-- 	<bean name="clienteDAO" class="co.com.tcs.toolg.dao.impl.ClienteDAO"></bean> -->
+<!-- 	<bean name="mgrCliente" class="co.com.tcs.toolg.servicios.impl.MgrCliente"> -->
+<!-- 		<property name="clienteDAO" ref="clienteDAO" /> -->
+<!-- 		<property name="customerSecurityDAO" ref="iCustomerSecurityDAO" /> -->
+<!-- 	</bean> -->
+</beans>
