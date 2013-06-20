@@ -96,7 +96,6 @@ body {
 .menu-active {
 	background: #50B200;
 	border-radius: 5px;
-	color: #FFFFFF;
 }
 
 /** BODY */
@@ -128,7 +127,6 @@ body {
 	font-family: 'Archivo Narrow', sans-serif;
 	letter-spacing: 1px;
 	color: #1B1B1B;
-	
 }
 
 /** FOOTER */

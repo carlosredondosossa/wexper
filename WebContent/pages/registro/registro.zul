@@ -25,10 +25,9 @@
 				<div sclass="logo" ><image src="/assets/img/logo.png" /></div>
 				<div sclass="menu" >
 					<hbox sclass="menu-group" >
-						<a href="#" label="Homepage" sclass="menu-action menu-active" />
-						<a href="#" label="My Designs" sclass="menu-action" />
-						<a href="#" label="About Me" sclass="menu-action" />
-						<a href="#" label="Contact" sclass="menu-action" />
+						<a href="#" label="Ofertas" sclass="menu-action menu-active" />
+						<a href="#" label="Documentos" sclass="menu-action" />
+						<a href="#" label="Reportes" sclass="menu-action" />
 					</hbox>
 				</div>
 			</div>

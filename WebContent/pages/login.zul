@@ -1,16 +1,45 @@
-
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
-<?page title=""?>
 
-<?script type="text/javascript" src="/js/jquery-1.4.2.js" ?>
-<?script type="text/javascript" src="/js/menu.js" ?>
+<?page title="WEXPER" contentType="text/html;charset=UTF-8"?>
 
-<?link type="text/css" rel="stylesheet" href="/css/style.css" ?>
+<?link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700" rel="stylesheet" type="text/css" ?>
+<?link type="text/css" rel="stylesheet" href="/assets/css/login.css" ?>
 
-<?script ?>
+<zk>
+	
+	<div sclass="page" >
+		<custom-attributes org.zkoss.zul.image.preload="true" />
+	
+		<div sclass="wrapper" >
+		
+			<div sclass="body">
+				<label sclass="title" value="Usuario:" />
+				<textbox width="292px" name="j_username" sclass="input" focus="true" tabindex="1" />
+				<separator height="15px" />
+				<label sclass="title" value="Contraseña:" />
+				<textbox width="292px" name="j_password" tabindex="2" type="password" sclass="input" />
+				<separator height="20px" />
+				<div align="right" width="297px"><button label="Ingresar" mold="trendy" type="submit"/></div>
+				<separator height="30px" />
+				<a label="Registrarse" href="/forgotpwd.do" sclass="link1"/>
+				<a label="¿Olvidó su contraseña?" href="/forgotpwd.do" sclass="link2"/>
+				
+				
+				<div style="margin:20px 0px 0px;" visible="@load(vm.msg.visible)" align="left">
+					<label value="@load(vm.msg.mensaje)" sclass="@load(vm.msg.sclass)" />
+				</div>
+				
+				
+			</div>
+			
+			<div sclass="separator"/>
+		
+			<div sclass="footer" >
+				<div sclass="footer-logo" ><image src="/assets/img/logo.png" /></div>
+			</div>
 
-<window title="Hello World!!!!!!!!!!!!!!!!!!!!!!" border="normal" width="200px">
+		</div>
+	
+	</div>
 
-	<label value="You are using: ${desktop.webApp.version}"/>
-
-</window>
+</zk>

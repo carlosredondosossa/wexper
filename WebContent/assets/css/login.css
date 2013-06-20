@@ -1,3 +1,115 @@
-@CHARSET "ISO-8859-1";
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: Tahoma;
+	font-size: 13px;
+}
 
-/* Cascading styles exclusive for login page */
+/** PAGE */
+
+.page {
+	min-height: 100%; 
+	position: relative;
+	background-image: url(../img/fondo.png);
+	background-attachment: fixed;
+}
+
+/** WRAPPER */
+
+.wrapper {
+	float:right;
+	width: 400px;
+	margin: 0px auto;
+	padding-top: 120px;
+}
+
+/** BODY */
+
+.body {
+	overflow: hidden;
+	width: 297px;
+	padding: 50px 50px 50px 50px;
+	background-color: rgba(36, 36, 36, 0.65);
+	border-left: 3px solid #50B200;
+	border-top: 3px solid #50B200;
+	border-radius: 10px 0px 0px 0px;
+}
+
+.title {
+	display: block;
+	padding: 0;
+	margin: 5px;
+	font-size: 1.5em;
+	font-weight: bold;
+	font-family: 'Archivo Narrow', sans-serif;
+	letter-spacing: 1px;
+	color: #FFFFFF;
+}
+
+.input {
+	display: block;
+	font-family: 'Archivo Narrow', sans-serif;
+	font-size: 1.2em;
+	font-weight: bold;
+	letter-spacing: 1px;
+	color: #50B200;
+}
+
+.link1, .link2 {
+	display: block;
+	font-family: 'Archivo Narrow', sans-serif;
+	font-size: 1.1em;
+	letter-spacing: 1px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.link1:hover, .link2:hover { text-decoration: underline; }
+
+.link1 { float: left; }
+
+.link2 { float: right; }
+
+.z-button .z-button-tl, .z-button .z-button-tr,
+ .z-button .z-button-bl, .z-button .z-button-br,
+.z-button .z-button-tm, .z-button .z-button-bm,
+ .z-button .z-button-cl, .z-button .z-button-cr {
+    background-image:none;     
+}
+.z-button .z-button-cm {
+	display: block;
+	padding: 5px 15px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-family: 'Archivo Narrow', sans-serif;
+	font-size: 1.2em;
+	color: #FFFFFF;
+	border: 2px solid #FFFFFF;
+	background-image:none;  
+	background-color: #50B200;
+	border-radius: 5px;
+}
+
+/** FOOTER */
+
+.separator{
+	width: 397px;
+	height: 6px;
+	background-color: #000000;
+	border-left: 3px solid #50B200;
+}
+
+.footer {
+	overflow: hidden;
+	width: 297px;
+	padding: 30px 50px 20px 50px;
+	background-color: rgba(36, 36, 36, 0.65);
+	border-left: 3px solid #50B200;
+	border-bottom: 3px solid #50B200;
+	border-radius: 0px 0px 00px 10px;
+}
+
+.footer-logo {
+	float: left;
+	width: 200px;
+}
