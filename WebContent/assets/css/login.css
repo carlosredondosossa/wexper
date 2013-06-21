@@ -38,9 +38,8 @@ body {
 .title {
 	display: block;
 	padding: 0;
-	margin: 5px;
+	margin: 0px;
 	font-size: 1.5em;
-	font-weight: bold;
 	font-family: 'Archivo Narrow', sans-serif;
 	letter-spacing: 1px;
 	color: #FFFFFF;
@@ -50,7 +49,6 @@ body {
 	display: block;
 	font-family: 'Archivo Narrow', sans-serif;
 	font-size: 1.2em;
-	font-weight: bold;
 	letter-spacing: 1px;
 	color: #50B200;
 }
@@ -88,7 +86,14 @@ body {
 	background-image:none;  
 	background-color: #50B200;
 	border-radius: 5px;
+	transition: all 0.05s ease-in-out;
+    -webkit-transition: all 0.05s ease-in-out;
+    position:relative;
 }
+
+.z-button-cm:hover { background-color: #3D8900; }
+
+.z-button-cm:active{ top:4px; right:4px; }
 
 /** FOOTER */
 

@@ -129,6 +129,41 @@ body {
 	color: #1B1B1B;
 }
 
+.input {
+	display: block;
+	font-family: 'Archivo Narrow', sans-serif;
+	font-size: 1.2em;
+	letter-spacing: 1px;
+	color: #50B200;
+}
+
+.z-button .z-button-tl, .z-button .z-button-tr,
+ .z-button .z-button-bl, .z-button .z-button-br,
+.z-button .z-button-tm, .z-button .z-button-bm,
+ .z-button .z-button-cl, .z-button .z-button-cr {
+    background-image:none;     
+}
+.z-button .z-button-cm {
+	display: block;
+	padding: 5px 15px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-family: 'Archivo Narrow', sans-serif;
+	font-size: 1.2em;
+	color: #FFFFFF;
+	border: 2px solid #FFFFFF;
+	background-image:none;  
+	background-color: #50B200;
+	border-radius: 5px;
+	transition: all 0.05s ease-in-out;
+    -webkit-transition: all 0.05s ease-in-out;
+    position:relative;
+}
+
+.z-button-cm:hover { background-color: #3D8900; }
+
+.z-button-cm:active{ top:4px; right:4px; }
+
 /** FOOTER */
 
 .footer {
