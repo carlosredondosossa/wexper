@@ -37,7 +37,7 @@ public class Estudiante implements Serializable {
 	@Column(name = "CELULAR", length=12) 
 	private String celular;
 	
-	@Column(name = "CORREO", length=60, nullable=false, unique=true) 
+	@Column(name = "CORREO", length=60) 
 	private String correo;
 	
 	@Column(name = "NIVEL", nullable=false, length=12) 

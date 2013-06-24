@@ -14,15 +14,15 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ASESOR")
-@SequenceGenerator(name = "ASESOR_SEQ", sequenceName = "ASESOR_SEQ", initialValue = 1, allocationSize = 1)
-public class Asesor implements Serializable {
+@Table(name="EMPRESARIO")
+@SequenceGenerator(name = "EMPRESARIO_SEQ", sequenceName = "EMPRESARIO_SEQ", initialValue = 1, allocationSize = 1)
+public class Empresario implements Serializable {
 
 	private static final long serialVersionUID = 4422361742585748214L;
 	
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy = SEQUENCE, generator="ASESOR_SEQ")
+	@GeneratedValue(strategy = SEQUENCE, generator="EMPRESARIO_SEQ")
 	private Integer id;
 	
 	@Column(name = "NOMBRE", nullable=false, length=60) 
@@ -40,8 +40,11 @@ public class Asesor implements Serializable {
 	@Column(name = "CORREO", length=60) 
 	private String correo;
 	
-	@Column(name = "TIPO", nullable=false, length=1) 
-	private String tipo;
+	@Column(name = "EMPRESA", nullable=false, length=60) 
+	private String empresa;
+	
+	@Column(name = "CARGO", nullable=false, length=40) 
+	private String cargo;
 	
 	@ManyToOne
 	@JoinColumn(name="username", nullable=false)
@@ -113,13 +116,23 @@ public class Asesor implements Serializable {
 	}
 
 
-	public String getTipo() {
-		return tipo;
+	public String getEmpresa() {
+		return empresa;
 	}
 
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setEmpresa(String empresa) {
+		this.empresa = empresa;
+	}
+
+
+	public String getCargo() {
+		return cargo;
+	}
+
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 
 
