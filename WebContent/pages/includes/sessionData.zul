@@ -1,0 +1,10 @@
+<div sclass="header" >
+	<div sclass="user">
+		<a href="#" sclass="header-label" ><attribute name="onCreate"><![CDATA[
+			try{ self.setLabel(session.getAttribute("FULL_NAME").toString()); }catch(Exception e){}
+		]]></attribute></a>
+	</div>
+	<div sclass="exit" >
+		<a href="/j_spring_security_logout" label="x" sclass="header-label" />
+	</div>
+</div>

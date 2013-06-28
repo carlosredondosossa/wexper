@@ -54,10 +54,20 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
-	<!-- CLIENTES -->
-<!-- 	<bean name="clienteDAO" class="co.com.tcs.toolg.dao.impl.ClienteDAO"></bean> -->
-<!-- 	<bean name="mgrCliente" class="co.com.tcs.toolg.servicios.impl.MgrCliente"> -->
-<!-- 		<property name="clienteDAO" ref="clienteDAO" /> -->
-<!-- 		<property name="customerSecurityDAO" ref="iCustomerSecurityDAO" /> -->
-<!-- 	</bean> -->
+
+	<!-- USERS -->
+	<bean name="userDAO" class="dao.impl.UserDAO"></bean>
+	
+	<!-- ESTUDIANTES -->
+	<bean name="estudianteDAO" class="dao.impl.EstudianteDAO"></bean>
+	
+	<!-- ASESORES -->
+	<bean name="asesorDAO" class="dao.impl.AsesorDAO"></bean>
+	
+	<!-- EMPRESARIOS -->
+	<bean name="empresarioDAO" class="dao.impl.EmpresarioDAO"></bean>
+	
+	<!-- ADMINS -->
+	<bean name="adminDAO" class="dao.impl.AdminDAO"></bean>
+
 </beans>

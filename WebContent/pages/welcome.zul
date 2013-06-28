@@ -1,0 +1,8 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window mode="overlapped" position="center">
+	<custom-attributes org.zkoss.zul.image.preload="true" />
+	<timer id="timer" delay="1" repeats="false"
+    onTimer='Executions.sendRedirect("/login.do")' />
+</window>
+</zk>

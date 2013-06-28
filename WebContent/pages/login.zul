@@ -10,26 +10,22 @@
 	<div sclass="page" >
 		<custom-attributes org.zkoss.zul.image.preload="true" />
 	
-		<div sclass="wrapper" >
-		
+		<div sclass="wrapper" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vista.Login')">
+			
 			<div sclass="body">
-				<label sclass="title" value="Usuario:" />
-				<textbox width="292px" name="j_username" sclass="input" focus="true" tabindex="1" />
-				<separator height="15px" />
-				<label sclass="title" value="Contraseña:" />
-				<textbox width="292px" name="j_password" tabindex="2" type="password" sclass="input" />
-				<separator height="20px" />
-				<div align="right" width="297px"><button label="Ingresar" mold="trendy" type="submit"/></div>
-				<separator height="30px" />
-				<a label="Registrarse" href="/forgotpwd.do" sclass="link1"/>
-				<a label="¿Olvidó su contraseña?" href="/forgotpwd.do" sclass="link2"/>
-				
-				
-				<div style="margin:20px 0px 0px;" visible="@load(vm.msg.visible)" align="left">
-					<label value="@load(vm.msg.mensaje)" sclass="@load(vm.msg.sclass)" />
-				</div>
-				
-				
+				<h:form id="f" name="f" action="j_spring_security_check" method="POST" xmlns:h="http://www.w3.org/1999/xhtml" >
+					<label sclass="title" value="Usuario:" />
+					<textbox width="292px" name="j_username" sclass="input" focus="true" tabindex="1" />
+					<separator height="15px" />
+					<label sclass="title" value="Contraseña:" />
+					<textbox width="292px" name="j_password" tabindex="2" type="password" sclass="input" />
+					<separator height="20px" />
+					<div align="right" width="297px"><button label="Ingresar" mold="trendy" type="submit"/></div>
+					<separator height="30px" />
+					<a label="Registrarse" href="/forgotpwd.do" sclass="link1"/>
+					<a label="¿Olvidó su contraseña?" href="/forgotpwd.do" sclass="link2"/>
+					<label visible="@load(not empty vm.msg)" value="@load(vm.msg)" sclass="input" style="margin-top: 20px" />
+				</h:form>
 			</div>
 			
 			<div sclass="separator"/>

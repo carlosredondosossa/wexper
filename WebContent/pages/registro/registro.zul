@@ -9,30 +9,12 @@
 	
 	<div sclass="page" >
 		<custom-attributes org.zkoss.zul.image.preload="true" />
-		
-		<div sclass="header" >
-			<div sclass="user">
-				<a href="#" label="Carlos Redondo Sossa" sclass="header-label" />
-			</div>
-			<div sclass="exit" >
-				<a href="#" label="x" sclass="header-label" />
-			</div>
-		</div>
 	
-		<div sclass="wrapper" >
+		<div sclass="wrapper" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vista.Registro')">
 		
-			<div sclass="action" >
-				<div sclass="logo" ><image src="/assets/img/logo.png" /></div>
-				<div sclass="menu" >
-					<hbox sclass="menu-group" >
-						<a href="#" label="Ofertas" sclass="menu-action menu-active" />
-						<a href="#" label="Documentos" sclass="menu-action" />
-						<a href="#" label="Reportes" sclass="menu-action" />
-					</hbox>
-				</div>
-			</div>
+			<div sclass="action" />
 		
-			<div sclass="body"  height="350px">
+			<div sclass="body"  height="330px" visible="@load(vm.visTipo)">
 				<label sclass="title" value="Nuevo usuario" />
 				<label sclass="text" value="Selecciona tu relación con el sitio:" />
 				<separator spacing="20px" />
@@ -54,6 +36,20 @@
 					</div>
 					<space />
 				</hbox>
+			</div>
+			
+			<div sclass="body"  height="330px" visible="@load(vm.visForm)" action="show: slideDown({duration: 800}); hide: slideUp({duration: 0})">
+				<label sclass="title" value="Nuevo usuario" />
+				<separator spacing="20px" />
+				<vbox align="center" width="100%">
+					<hbox >
+						<label style="float: left" sclass="text" value="Nombre"/>
+						<textbox style="float:right" sclass="input" width="200px"/>
+					</hbox>
+					<hbox>
+						
+					</hbox>
+				</vbox>
 			</div>
 		
 			<div sclass="footer" >

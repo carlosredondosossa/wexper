@@ -37,9 +37,6 @@ public class Asesor implements Serializable {
 	@Column(name = "CELULAR", length=12) 
 	private String celular;
 	
-	@Column(name = "CORREO", length=60) 
-	private String correo;
-	
 	@Column(name = "TIPO", nullable=false, length=1) 
 	private String tipo;
 	
@@ -100,16 +97,6 @@ public class Asesor implements Serializable {
 
 	public void setCelular(String celular) {
 		this.celular = celular;
-	}
-
-
-	public String getCorreo() {
-		return correo;
-	}
-
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
 	}
 
 

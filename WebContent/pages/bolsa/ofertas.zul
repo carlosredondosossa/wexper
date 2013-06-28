@@ -1,0 +1,59 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<?page title="WEXPER" contentType="text/html;charset=UTF-8"?>
+
+<?link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700" rel="stylesheet" type="text/css" ?>
+<?link type="text/css" rel="stylesheet" href="/assets/css/style.css" ?>
+
+<zk>
+	
+	<div sclass="page" >
+		<custom-attributes org.zkoss.zul.image.preload="true" />
+		
+		<include src="/pages/includes/sessionData.zul" />
+		
+		<div sclass="header" >
+			<div sclass="user">
+				<a href="#" label="Carlos Redondo Sossa" sclass="header-label" />
+			</div>
+			<div sclass="exit" >
+				<a href="#" label="x" sclass="header-label" />
+			</div>
+		</div>
+	
+		<div sclass="wrapper" >
+		
+			<div sclass="action" >
+				<div sclass="logo" ><image src="/assets/img/logo.png" /></div>
+				<div sclass="menu" >
+					<hbox sclass="menu-group" >
+						<a href="#" label="Ofertas" sclass="menu-action menu-active" />
+						<a href="#" label="Documentos" sclass="menu-action" />
+						<a href="#" label="Reportes" sclass="menu-action" />
+					</hbox>
+				</div>
+			</div>
+		
+			<div sclass="body"  height="350px">
+				<label sclass="title" value="Ofertas de empleo" />
+				<label sclass="text" value="Selecciona la oferta a la cual quieres aplicar." />
+				<separator spacing="20px" />
+				
+				
+				
+			</div>
+		
+			<div sclass="footer" >
+				<div sclass="footer-logo" ><image src="/assets/img/logo.png" /></div>
+			</div>
+
+			<div sclass="copyright" >
+				<label sclass="copyright-bold" value="Copyright (c) 2013 " />
+				<label sclass="copyright-text" value="Carlos Andrés Redondo Sossa. All rights reserved." />
+			</div>
+
+		</div>
+	
+	</div>
+
+</zk>

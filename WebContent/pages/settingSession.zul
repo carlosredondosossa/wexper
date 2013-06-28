@@ -1,0 +1,6 @@
+<?page title="Setting Session" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window mode="overlapped" position="center">
+	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vista.SettingSession')"/>
+</window>
+</zk>
