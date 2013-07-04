@@ -2,7 +2,7 @@
 
 <?page title="WEXPER" contentType="text/html;charset=UTF-8"?>
 
-<?link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700" rel="stylesheet" type="text/css" ?>
+<?link href="http://fonts.googleapis.com/css?family=Archivo+Narrow:400,700" rel="stylesheet" type="text/css" ?>
 <?link type="text/css" rel="stylesheet" href="/assets/css/style.css" ?>
 
 <zk>
@@ -14,42 +14,114 @@
 		
 			<div sclass="action" />
 		
-			<div sclass="body"  height="330px" visible="@load(vm.visTipo)">
-				<label sclass="title" value="Nuevo usuario" />
-				<label sclass="text" value="Selecciona tu relación con el sitio:" />
-				<separator spacing="20px" />
-				<hbox widths="80px, 160px, 130px, 160px, 130px, 160px, 80px" width="100%">
+			<div sclass="body"  height="330px" >
+				<div>
+					<label sclass="title" value="Nuevo usuario" />
+					<label sclass="msg" visible="@load(vm.visMsg)" value="@load(vm.textMsg)" />
+					<image style="float: right;" visible="@load(vm.visMsg)" src="/assets/img/exclamation.png" />
+				</div>
+				<label sclass="text" value="Selecciona tu relación con el sitio:" visible="@load(vm.visTipo)"/>
+				<separator spacing="20px" visible="@load(vm.visTipo)"/>
+				
+				<!-- 	SELECCION TIPO DE USUARIO	 -->
+				<hbox widths="80px, 160px, 130px, 160px, 130px, 160px, 80px" width="100%" visible="@load(vm.visTipo)">
 					<space />
 					<div align="center" width="100%" >
-						<div sclass="image-border-registro"><image src="/assets/img/estudiante.png" sclass="image-registro" /></div>
-						<a sclass="footer-registro" label="Estudiante"/>
+						<div sclass="image-border-registro"><image src="/assets/img/estudiante.png" sclass="image-registro" onClick="@command('seleccionarTipo',tipo='ES')"/></div>
+						<a sclass="footer-registro" label="Estudiante" onClick="@command('seleccionarTipo',tipo='ES')"/>
 					</div>
 					<space />
 					<div align="center" width="100%" >
-						<div sclass="image-border-registro"><image src="/assets/img/asesor.png" sclass="image-registro" /></div>
-						<a sclass="footer-registro" label="Asesor"/>
+						<div sclass="image-border-registro"><image src="/assets/img/asesor.png" onClick="@command('seleccionarTipo',tipo='AS')" sclass="image-registro" /></div>
+						<a sclass="footer-registro" label="Asesor" onClick="@command('seleccionarTipo',tipo='AS')"/>
 					</div>
 					<space />
 					<div align="center" width="100%" >
-						<div sclass="image-border-registro"><image src="/assets/img/empresario.png" sclass="image-registro" /></div>
-						<a sclass="footer-registro" label="Empresario"/>
+						<div sclass="image-border-registro"><image src="/assets/img/empresario.png" onClick="@command('seleccionarTipo',tipo='EM')" sclass="image-registro" /></div>
+						<a sclass="footer-registro" label="Empresario" onClick="@command('seleccionarTipo',tipo='EM')"/>
 					</div>
 					<space />
 				</hbox>
-			</div>
-			
-			<div sclass="body"  height="330px" visible="@load(vm.visForm)" action="show: slideDown({duration: 800}); hide: slideUp({duration: 0})">
-				<label sclass="title" value="Nuevo usuario" />
-				<separator spacing="20px" />
-				<vbox align="center" width="100%">
-					<hbox >
-						<label style="float: left" sclass="text" value="Nombre"/>
-						<textbox style="float:right" sclass="input" width="200px"/>
-					</hbox>
-					<hbox>
-						
-					</hbox>
-				</vbox>
+				
+				<!-- 	FORMULARIO	DE CREACION 	-->
+				<hbox width="100%" align="start" visible="@load(vm.visForm)">
+					<vbox>
+						<hbox>
+							<cell align="left" width="100px"><label sclass="text mandatory" value="Nombre"/></cell>
+							<textbox sclass="input" width="200px" value="@bind(vm.nombre)"/>
+						</hbox>
+						<hbox>
+							<cell align="left" width="100px"><label sclass="text mandatory" value="Apellidos"/></cell>
+							<textbox sclass="input" width="200px" value="@bind(vm.apellido)"/>
+						</hbox>
+						<hbox>
+							<cell align="left" width="100px" visible="@load(vm.visEstudiante)"><label sclass="text mandatory" value="Nivel"/></cell>
+							<combobox width="205px" readonly="true" mold="default" selectedItem="@bind(vm.nivel)" visible="@load(vm.visEstudiante)">
+								<comboitem label="Técnico" value="Técnico"/>
+								<comboitem label="Tecnólogo" value="Tecnólogo"/>
+							</combobox>
+							<cell align="left" width="100px" visible="@load(vm.visAsesor)"><label sclass="text mandatory" value="Tipo"/></cell>
+							<combobox width="205px" readonly="true" mold="default" selectedItem="@bind(vm.tipo)" visible="@load(vm.visAsesor)">
+								<comboitem label="Interno" value="I"/>
+								<comboitem label="Externo" value="E"/>
+							</combobox>
+							<cell align="left" width="100px" visible="@load(vm.visEmpresario)"><label sclass="text mandatory" value="Empresa"/></cell>
+							<textbox sclass="input" width="200px" value="@bind(vm.empresa)" visible="@load(vm.visEmpresario)"/>
+						</hbox>
+						<hbox visible="@load(vm.visEmpresario)">
+							<cell align="left" width="100px"><label sclass="text mandatory" value="Cargo"/></cell>
+							<textbox sclass="input" width="200px" value="@bind(vm.cargo)"/>
+						</hbox>
+						<hbox>
+							<cell align="left" width="100px"><label sclass="text" value="Teléfono"/></cell>
+							<textbox sclass="input" width="200px" value="@bind(vm.telefono)"/>
+						</hbox>
+						<hbox>
+							<cell align="left" width="100px"><label sclass="text" value="Celular"/></cell>
+							<textbox sclass="input" width="200px" value="@bind(vm.celular)"/>
+						</hbox>
+					</vbox>
+					<space spacing="70px"/>
+					<vbox>
+						<hbox>
+							<cell align="left" width="200px"><label sclass="text mandatory" value="Correo (Usuario)"/></cell>
+							<textbox sclass="input" width="275px" value="@bind(vm.correo)" onChange="@command('validarCorreo')"/>
+							<image src="/assets/img/ok.png" visible="@load(vm.visCorreo)"/>
+						</hbox>
+						<hbox>
+							<cell align="left" width="200px"><label sclass="text mandatory" value="Contraseña"/></cell>
+							<textbox sclass="input" width="275px" type="password" value="@bind(vm.pwd)" onChange="@command('compararPwd')" instant="true"/>
+						</hbox>
+						<hbox>
+							<cell align="left" width="200px"><label sclass="text mandatory" value="Repetir contraseña"/></cell>
+							<textbox sclass="input" width="275px" type="password" value="@bind(vm.rePwd)" onChange="@command('compararPwd')" instant="true"/>
+							<image src="/assets/img/ok.png" visible="@load(vm.visRePwd)"/>
+						</hbox>
+						<hbox>
+							<cell align="left" width="200px"><label sclass="text mandatory" value="Pregunta de seguridad"/></cell>
+							<combobox width="280px" readonly="true" mold="default" selectedItem="@bind(vm.question)" >
+								<comboitem label="¿Cuál es su canción favorita?" value="¿Cuál es su canción favorita?"/>
+								<comboitem label="¿Cuál es el nombre de su primer mascota?" value="¿Cuál es el nombre de su primer mascota?"/>
+								<comboitem label="¿Cuál es el nombre de la empresa donde trabajó por primera vez?" value="¿Cuál es el nombre de la empresa donde trabajó por primera vez?"/>
+								<comboitem label="¿Cuál es su pelicula favorita?" value="¿Cuál es su pelicula favorita?"/>
+								<comboitem label="¿Cuál es el nombre de su actor favorito?" value="¿Cuál es el nombre de su actor favorito?"/>
+								<comboitem label="¿Cuál es su libro favorito?" value="¿Cuál es su libro favorito?"/>
+								<comboitem label="¿Cuál es el nombre de su equipo favorito?" value="¿Cuál es el nombre de su equipo favorito?"/>
+							</combobox>
+						</hbox>
+						<hbox>
+							<cell align="left" width="200px"><label sclass="text mandatory" value="Respuesta de seguridad"/></cell>
+							<textbox sclass="input" width="275px" value="@bind(vm.answer)" />
+						</hbox>
+					</vbox>
+				</hbox>
+				<separator spacing="75px" visible="@load(vm.visEmpresario)"/>
+				<separator spacing="100px" visible="@load(not vm.visEmpresario)"/>
+				<hbox visible="@load(vm.visForm)">
+					<button label="Crear" mold="trendy" onClick="@command('crear')"/>
+					<space spacing="20px"/>
+					<button label="Atras" mold="trendy" onClick="@command('retornar')"/>
+				</hbox>
 			</div>
 		
 			<div sclass="footer" >

@@ -2,7 +2,7 @@
 
 <?page title="WEXPER" contentType="text/html;charset=UTF-8"?>
 
-<?link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700" rel="stylesheet" type="text/css" ?>
+<?link href="http://fonts.googleapis.com/css?family=Archivo+Narrow:400,700" rel="stylesheet" type="text/css" ?>
 <?link type="text/css" rel="stylesheet" href="/assets/css/style.css" ?>
 
 <zk>
@@ -11,15 +11,6 @@
 		<custom-attributes org.zkoss.zul.image.preload="true" />
 		
 		<include src="/pages/includes/sessionData.zul" />
-		
-		<div sclass="header" >
-			<div sclass="user">
-				<a href="#" label="Carlos Redondo Sossa" sclass="header-label" />
-			</div>
-			<div sclass="exit" >
-				<a href="#" label="x" sclass="header-label" />
-			</div>
-		</div>
 	
 		<div sclass="wrapper" >
 		

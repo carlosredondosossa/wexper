@@ -2,7 +2,7 @@
 
 <?page title="WEXPER" contentType="text/html;charset=UTF-8"?>
 
-<?link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700" rel="stylesheet" type="text/css" ?>
+<?link href="http://fonts.googleapis.com/css?family=Archivo+Narrow:400,700" rel="stylesheet" type="text/css" ?>
 <?link type="text/css" rel="stylesheet" href="/assets/css/login.css" ?>
 
 <zk>
@@ -22,7 +22,7 @@
 					<separator height="20px" />
 					<div align="right" width="297px"><button label="Ingresar" mold="trendy" type="submit"/></div>
 					<separator height="30px" />
-					<a label="Registrarse" href="/forgotpwd.do" sclass="link1"/>
+					<a label="Registrarse" href="/registro.do" sclass="link1"/>
 					<a label="¿Olvidó su contraseña?" href="/forgotpwd.do" sclass="link2"/>
 					<label visible="@load(not empty vm.msg)" value="@load(vm.msg)" sclass="input" style="margin-top: 20px" />
 				</h:form>

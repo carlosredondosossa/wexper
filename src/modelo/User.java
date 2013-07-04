@@ -31,10 +31,10 @@ public class User implements Serializable {
 	private String tipo;
 	
 	@Column(name = "security_question", length=600)
-	private String securityQuestion;
+	private String question;
 
 	@Column(name = "security_answer", length=600)
-	private String securityAnswer;
+	private String answer;
 
 	
 	public String getUsername() {
@@ -77,19 +77,19 @@ public class User implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public String getSecurityQuestion() {
-		return securityQuestion;
+	public String getQuestion() {
+		return question;
 	}
 
-	public void setSecurityQuestion(String securityQuestion) {
-		this.securityQuestion = securityQuestion;
+	public void setQuestion(String question) {
+		this.question = question;
 	}
 
-	public String getSecurityAnswer() {
-		return securityAnswer;
+	public String getAnswer() {
+		return answer;
 	}
 
-	public void setSecurityAnswer(String securityAnswer) {
-		this.securityAnswer = securityAnswer;
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 }

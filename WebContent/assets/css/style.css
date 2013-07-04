@@ -86,7 +86,7 @@ body {
 	text-transform: uppercase;
 	font-family: 'Archivo Narrow', sans-serif;
 	font-size: 1.10em;
-	font-weight: 600;
+	font-weight: bold;
 	color: #FFFFFF;
 }
 
@@ -110,7 +110,7 @@ body {
 }
 
 .title {
-	display: block;
+	display: inline-block;
 	padding: 0;
 	margin: 0px 0px 30px 0px;
 	font-size: 1.5em;
@@ -130,12 +130,29 @@ body {
 	color: #1B1B1B;
 }
 
+.msg {
+	float: right;
+	display: block;
+	padding-top: 5px;
+	padding-left: 10px;
+	font-size: 1em;
+	font-family: 'Archivo Narrow', sans-serif;
+	letter-spacing: 1px;
+	color: #50B200;
+}
+
 .input {
 	display: block;
 	font-family: 'Archivo Narrow', sans-serif;
 	font-size: 1.1em;
 	letter-spacing: 1px;
 	color: #50B200;
+}
+
+.mandatory:AFTER {
+	color: #F44;
+	font-weight:bold;
+	content: ' * ';
 }
 
 .z-button .z-button-tl, .z-button .z-button-tr,
@@ -152,7 +169,8 @@ body {
 	font-family: 'Archivo Narrow', sans-serif;
 	font-size: 1.2em;
 	color: #FFFFFF;
-	border: 2px solid #FFFFFF;
+	border: 2px solid;
+	border-color: rgba(36, 36, 36, 0.65);
 	background-image:none;  
 	background-color: #50B200;
 	border-radius: 5px;
@@ -163,7 +181,24 @@ body {
 
 .z-button-cm:hover { background-color: #3D8900; }
 
-.z-button-cm:active{ top:4px; right:4px; }
+.z-button-cm:active { top:4px; right:4px; }
+
+.z-combobox-readonly, .z-combobox-focus .z-combobox-readonly { background: #FFFFFF; }
+
+.z-combobox-inp {
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    color: #50B200;
+}
+
+.z-combobox-pp .z-comboitem, .z-combobox-pp .z-comboitem a,
+.z-combobox-pp .z-comboitem a:visited {
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    color: #50B200;
+}
 
 /** FOOTER */
 
