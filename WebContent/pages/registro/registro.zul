@@ -17,8 +17,8 @@
 			<div sclass="body"  height="330px" >
 				<div>
 					<label sclass="title" value="Nuevo usuario" />
-					<label sclass="msg" visible="@load(vm.visMsg)" value="@load(vm.textMsg)" />
-					<image style="float: right;" visible="@load(vm.visMsg)" src="/assets/img/exclamation.png" />
+					<label sclass="msg" visible="@load(not empty vm.msg)" value="@load(vm.msg)" />
+					<image style="float: right;" visible="@load(not empty vm.msg)" src="/assets/img/exclamation.png" />
 				</div>
 				<label sclass="text" value="Selecciona tu relación con el sitio:" visible="@load(vm.visTipo)"/>
 				<separator spacing="20px" visible="@load(vm.visTipo)"/>

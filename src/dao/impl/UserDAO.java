@@ -52,16 +52,16 @@ public class UserDAO implements IUserDAO{
 	} //End-Function(validarEdicion)
 
 	@Override @Transactional
-	public boolean editar(User user) {
+	public User editar(User user) {
 		try {
 			if ( user.getUsername() != null && !user.getUsername().isEmpty() ) {
 				em.merge(user);
-				return true;
+				return user;
 			}
-			return false;
+			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		}
 	}
 

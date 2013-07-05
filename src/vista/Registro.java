@@ -33,8 +33,7 @@ public class Registro {
 	private boolean visRePwd;
 	private boolean visCorreo;
 	
-	private boolean visMsg;
-	private String textMsg;
+	private String msg = new String();
 	
 	private String nombre;
 	private String apellido;
@@ -86,6 +85,8 @@ public class Registro {
 	@Command
 	@NotifyChange("visRePwd")
 	public void compararPwd() {
+		if (validarPwdLong())
+			return;
 		if (pwd != null && rePwd != null)
 			visRePwd = (! pwd.equals(rePwd)) ? false : true;
 		else
@@ -102,27 +103,27 @@ public class Registro {
 	@NotifyChange("*")
 	public void crear() {
 		if(faltanLlenarCampos()){
-			verMsg("Debe ingresar todos los campos obligatorios.");
+			msg = "Debe ingresar todos los campos obligatorios.";
 			return;
 		}
 		
 		if(! Validator.validarCorreo(correo)){
-			verMsg("El correo ingresado no es válido.");
+			msg = "El correo ingresado no es válido.";
 			return;
 		}
 		
 		if(! validarDuplicados()){
-			verMsg("El correo ingresado ya existe.");
+			msg = "El correo ingresado ya existe.";
 			return;
 		}
 		
 		if(validarPwdLong()){
-			verMsg("La contraseña debe tener mínimo 8 caracteres.");
+			msg = "La contraseña debe tener mínimo 8 caracteres.";
 			return;
 		}
 		
 		if(validarPwd()){
-			verMsg("Las contraseñas ingresadas no son iguales.");
+			msg = "Las contraseñas ingresadas no son iguales.";
 			return;
 		}
 		
@@ -140,7 +141,7 @@ public class Registro {
 			emp = ServiceLocator.getEmpresarioDAO().crear(emp);
 		}
 		showView("");
-		verMsg("Usuario creado con éxito. Un correo le informara cuando se encuentre activo.");
+		msg = "Usuario creado con éxito. Un correo le informara cuando se encuentre activo.";
 	}
 	
 	private boolean faltanLlenarCampos(){
@@ -184,7 +185,7 @@ public class Registro {
 	
 	private boolean validarPwdLong() {
 		boolean falta = false;
-		if(pwd.length() < 8) { falta = true; }
+		if(pwd != null && pwd.length() < 8) { falta = true; }
 		return falta;
 	}
 	
@@ -192,11 +193,6 @@ public class Registro {
 		boolean unico = false;
 		if(! pwd.equals(rePwd)) { unico = true; }
 		return unico;
-	}
-	
-	private void verMsg(String msg){
-		textMsg = msg;
-		visMsg = true;
 	}
 	
 	private User obtenerDatosUser() {
@@ -263,8 +259,7 @@ public class Registro {
 	
 	private void showView(String accion) {
 		
-		textMsg = "";
-		visMsg = false;
+		msg = "";
 		
 		visTipo = visForm = false;
 		
@@ -326,20 +321,12 @@ public class Registro {
 		this.visRePwd = visRePwd;
 	}
 
-	public boolean isVisMsg() {
-		return visMsg;
+	public String getMsg() {
+		return msg;
 	}
 
-	public void setVisMsg(boolean visMsg) {
-		this.visMsg = visMsg;
-	}
-
-	public String getTextMsg() {
-		return textMsg;
-	}
-
-	public void setTextMsg(String textMsg) {
-		this.textMsg = textMsg;
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 
 	public String getTipoUsuario() {

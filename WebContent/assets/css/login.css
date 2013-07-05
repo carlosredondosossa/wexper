@@ -53,6 +53,17 @@ body {
 	color: #50B200;
 }
 
+.msg {
+	float: left;
+	display: block;
+	padding-top: 5px;
+	padding-left: 10px;
+	font-size: 1em;
+	font-family: 'Archivo Narrow', sans-serif;
+	letter-spacing: 1px;
+	color: #50B200;
+}
+
 .link1, .link2 {
 	display: block;
 	font-family: 'Archivo Narrow', sans-serif;
