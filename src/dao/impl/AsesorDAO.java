@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import modelo.Asesor;
+import modelo.User;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -44,7 +45,7 @@ public class AsesorDAO implements IAsesorDAO {
 	}
 	
 	@Override @Transactional(readOnly = true)
-	public Asesor findByUsername(String username) {
+	public Asesor findByUsername(User username) {
 		Session sc = (Session) em.getDelegate();
 		Criteria criteria = sc.createCriteria(persistentClass)
 				.add(Restrictions.eq("username", username));

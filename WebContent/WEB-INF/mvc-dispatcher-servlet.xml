@@ -58,6 +58,9 @@
 	<!-- USERS -->
 	<bean name="userDAO" class="dao.impl.UserDAO"></bean>
 	
+	<!-- AUTHORITY -->
+	<bean name="authorityDAO" class="dao.impl.AuthorityDAO"></bean>
+	
 	<!-- ESTUDIANTES -->
 	<bean name="estudianteDAO" class="dao.impl.EstudianteDAO"></bean>
 	

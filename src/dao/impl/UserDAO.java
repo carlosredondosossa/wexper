@@ -32,6 +32,7 @@ public class UserDAO implements IUserDAO{
 		this.persistentClass = persistentClass;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override @Transactional(readOnly=true)
 	public Collection<User> listarAll() {
 		try {
@@ -47,7 +48,6 @@ public class UserDAO implements IUserDAO{
 
 	@Override
 	public boolean validarEdicion(User user) {
-//		TODO: Realizar la validación correspondiente para la realizar la edición.
 		return false;
 	} //End-Function(validarEdicion)
 
@@ -94,6 +94,18 @@ public class UserDAO implements IUserDAO{
 		try {
 			Criteria crt = ((Session) em.getDelegate()).createCriteria(persistentClass);
 			crt.add(Restrictions.eq("username", username));
+			return (User) crt.uniqueResult();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	@Override @Transactional(readOnly=true)
+	public User getByCorreo(String correo) {
+		try {
+			Criteria crt = ((Session) em.getDelegate()).createCriteria(persistentClass);
+			crt.add(Restrictions.eq("correo", correo));
 			return (User) crt.uniqueResult();
 		} catch (HibernateException e) {
 			e.printStackTrace();

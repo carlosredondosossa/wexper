@@ -2,8 +2,17 @@ package util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Validator {
+	
+	public static final String PATTERN_USUARIO = "^[a-zA-Z0-9]*$";
+	
+	public static boolean validarUsuario(String value) {
+		Matcher matcher = Pattern.compile(PATTERN_USUARIO).matcher(value);
+		return matcher.find();
+	}
 	
 	public static String generarPwd(String pwd){
         String algorithm = "SHA-1";

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import locator.ServiceLocator;
 import modelo.Asesor;
+import modelo.Authority;
 import modelo.Empresario;
 import modelo.Estudiante;
 import modelo.User;
@@ -32,6 +33,7 @@ public class Registro {
 	private boolean visEmpresario;
 	private boolean visRePwd;
 	private boolean visCorreo;
+	private boolean visUsuario;
 	
 	private String msg = new String();
 	
@@ -44,10 +46,13 @@ public class Registro {
 	private String empresa;
 	private String cargo;
 	private String correo;
+	private String usuario;
 	private String pwd;
 	private String rePwd;
 	private String question;
 	private String answer;
+	
+	private enum tiposUsuario {ES, AI, AE, EM, AD};
 	
 	@RequestMapping(value = "/registro.do", method = RequestMethod.GET)
 	public String Servicios(HttpServletRequest request,HttpServletResponse response) {
@@ -79,18 +84,23 @@ public class Registro {
 	@Command
 	@NotifyChange("visCorreo")
 	public void validarCorreo() {
-		visCorreo = (! Validator.validarCorreo(correo)) || ! validarDuplicados() ? false : true;
+		visCorreo = (! Validator.validarCorreo(correo)) || ! validarDuplicadosCorreo() ? false : true;
+	}
+	
+	@Command
+	@NotifyChange("visUsuario")
+	public void validarUsuario() {
+		visUsuario = (! Validator.validarUsuario(usuario)) || ! validarDuplicadosUsuario() ? false : true;
 	}
 	
 	@Command
 	@NotifyChange("visRePwd")
 	public void compararPwd() {
+		visRePwd = false;
 		if (validarPwdLong())
 			return;
 		if (pwd != null && rePwd != null)
 			visRePwd = (! pwd.equals(rePwd)) ? false : true;
-		else
-			visRePwd = false;
 	}
 	
 	@Command
@@ -112,8 +122,18 @@ public class Registro {
 			return;
 		}
 		
-		if(! validarDuplicados()){
+		if(! validarDuplicadosCorreo()){
 			msg = "El correo ingresado ya existe.";
+			return;
+		}
+		
+		if(! Validator.validarUsuario(usuario)){
+			msg = "El usuario ingresado no es válido. Solo puede contener letras y numeros.";
+			return;
+		}
+		
+		if(! validarDuplicadosUsuario()){
+			msg = "El usuario ingresado ya existe.";
 			return;
 		}
 		
@@ -129,6 +149,9 @@ public class Registro {
 		
 		User user = obtenerDatosUser();
 		user = ServiceLocator.getUserDAO().crear(user);
+		
+		Authority authority = obtenerDatosAuthority(user);
+		authority = ServiceLocator.getAuthorityDAO().crear(authority);
 		
 		if("ES".equals(tipoUsuario)) {
 			Estudiante est = obtenerDatosES(user);
@@ -168,6 +191,9 @@ public class Registro {
 		if (correo == null || correo.trim().isEmpty()) {
 			faltan = true;
 		}
+		if (usuario == null || usuario.trim().isEmpty()) {
+			faltan = true;
+		}
 		if (pwd == null || pwd.trim().isEmpty()) {
 			faltan = true;
 		}
@@ -177,9 +203,15 @@ public class Registro {
 		return faltan;
 	}
 	
-	private boolean validarDuplicados() {
+	private boolean validarDuplicadosCorreo() {
 		boolean unico = false;
-		if(ServiceLocator.getUserDAO().getById(correo) == null) { unico = true; }
+		if(ServiceLocator.getUserDAO().getByCorreo(correo) == null) { unico = true; }
+		return unico;
+	}
+	
+	private boolean validarDuplicadosUsuario() {
+		boolean unico = false;
+		if(ServiceLocator.getUserDAO().getById(usuario) == null) { unico = true; }
 		return unico;
 	}
 	
@@ -195,13 +227,36 @@ public class Registro {
 		return unico;
 	}
 	
+	private String obtenerTipo() {
+		String tipo = new String();
+		
+		if(tipoUsuario.equals(tiposUsuario.ES.name()) || tipoUsuario.equals(tiposUsuario.EM.name()))
+			tipo = tipoUsuario;
+		else {
+			if (this.tipo.equals("I"))
+				tipo = tiposUsuario.AI.name();
+			else
+				tipo = tiposUsuario.AE.name();
+		}
+		
+		return tipo;
+	}
+	
+	private Authority obtenerDatosAuthority(User user) {
+		Authority authority = new Authority();
+		authority.setAuthority("ROLE");
+		authority.setUsername(user);
+		return authority;
+	}
+	
 	private User obtenerDatosUser() {
 		User user = new User();
-		user.setUsername(correo);
+		user.setCorreo(correo);
+		user.setUsername(usuario);
 		user.setPassword(Validator.generarPwd(pwd));
-		user.setEnabled(true);
+		user.setEnabled(false);
 		user.setEstado("P");
-		user.setTipo(tipoUsuario);
+		user.setTipo(obtenerTipo());
 		user.setQuestion(question);
 		user.setAnswer(Validator.generarPwd(answer));
 		return user;
@@ -251,6 +306,7 @@ public class Registro {
 		empresa =
 		cargo = 
 		correo = 
+		usuario =
 		pwd =
 		rePwd = 
 		question =
@@ -263,7 +319,7 @@ public class Registro {
 		
 		visTipo = visForm = false;
 		
-		visEstudiante = visAsesor = visEmpresario = visRePwd = visCorreo = false;
+		visEstudiante = visAsesor = visEmpresario = visRePwd = visCorreo = visUsuario = false;
 	    
 	    if("SEL_TIPO".equals(accion)){
 	    	visTipo = true;
@@ -447,6 +503,22 @@ public class Registro {
 
 	public void setAnswer(String answer) {
 		this.answer = answer;
+	}
+
+	public boolean isVisUsuario() {
+		return visUsuario;
+	}
+
+	public void setVisUsuario(boolean visUsuario) {
+		this.visUsuario = visUsuario;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 	
 }

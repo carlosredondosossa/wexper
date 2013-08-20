@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
 import modelo.Estudiante;
+import modelo.User;
 import dao.IEstudianteDAO;
 
 public class EstudianteDAO implements IEstudianteDAO{
@@ -43,7 +44,7 @@ public class EstudianteDAO implements IEstudianteDAO{
 	}
 	
 	@Override @Transactional(readOnly = true)
-	public Estudiante findByUsername(String username) {
+	public Estudiante findByUsername(User username) {
 		Session sc = (Session) em.getDelegate();
 		Criteria criteria = sc.createCriteria(persistentClass)
 				.add(Restrictions.eq("username", username));

@@ -17,10 +17,6 @@ public class Login {
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String perfil_Inicio() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if ( authentication != null && !(authentication instanceof AnonymousAuthenticationToken) && authentication.isAuthenticated() ) {
-			return "redirect:/home.do";
-		}
 		return "login";
 	}
 	
@@ -28,7 +24,7 @@ public class Login {
 	public String loginerror() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if ( authentication != null && !(authentication instanceof AnonymousAuthenticationToken) && authentication.isAuthenticated() ) {
-			return "redirect:/home.do";
+			return "redirect:/settingSession.do";
 		}
 		return "login";
 	}
@@ -41,6 +37,7 @@ public class Login {
 	private final String LOGIN_ERROR_USER_NOT_FOUND = "El usuario o contraseña es incorrecta.";
 	private final String LOGIN_ERROR_USER_PENDING = "El usuario no ha sido activado.";
 	private final String LOGIN_ERROR_USER_DISABLED = "El usuario se encuentra inactivo.";
+	private final String LOGIN_ERROR_WRONG_PWD = "Usuario y/o contraseña incorrecta.";
 	
 	private String msg = new String();
 	
@@ -77,6 +74,8 @@ public class Login {
 			setMsg(LOGIN_ERROR_USER_DISABLED);
 			return;
 		}
+		
+		setMsg(LOGIN_ERROR_WRONG_PWD);
 	}
 
 	public String getMsg() {

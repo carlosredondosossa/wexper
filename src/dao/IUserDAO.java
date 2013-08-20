@@ -11,4 +11,5 @@ public interface IUserDAO {
 	public boolean eliminar(User user);
 	public User crear(User user);
 	public User getById(String username);
+	public User getByCorreo(String correo);
 }

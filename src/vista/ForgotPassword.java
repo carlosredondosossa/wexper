@@ -4,16 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import locator.ServiceLocator;
-import modelo.Asesor;
-import modelo.Empresario;
-import modelo.Estudiante;
 import modelo.User;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
@@ -62,7 +58,7 @@ public class ForgotPassword {
 		user = ServiceLocator.getUserDAO().getById(username);
 		
 		if (user == null)
-			msg = "El correo ingresado no existe.";
+			msg = "El usuario ingresado no existe.";
 		else {
 			question = user.getQuestion();
 			visUser = false;

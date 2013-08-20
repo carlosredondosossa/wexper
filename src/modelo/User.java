@@ -15,7 +15,7 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 7167592027105665275L;
 	
 	@Id
-	@Column(name = "username", length=60,  nullable=false, unique=true)
+	@Column(name = "username", length=20,  nullable=false, unique=true)
 	private String username;
 	
 	@Column(name = "password", length=125, nullable=false)
@@ -29,6 +29,9 @@ public class User implements Serializable {
 	
 	@Column(name = "tipo",length=2, nullable=false)
 	private String tipo;
+	
+	@Column(name = "correo", length=60, nullable=false, unique=true)
+	private String correo;
 	
 	@Column(name = "security_question", length=600)
 	private String question;
@@ -91,5 +94,13 @@ public class User implements Serializable {
 
 	public void setAnswer(String answer) {
 		this.answer = answer;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
 }

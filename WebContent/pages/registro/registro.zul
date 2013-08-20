@@ -48,11 +48,11 @@
 					<vbox>
 						<hbox>
 							<cell align="left" width="100px"><label sclass="text mandatory" value="Nombre"/></cell>
-							<textbox sclass="input" width="200px" value="@bind(vm.nombre)"/>
+							<textbox sclass="input" width="200px" value="@bind(vm.nombre)" maxlength="60"/>
 						</hbox>
 						<hbox>
 							<cell align="left" width="100px"><label sclass="text mandatory" value="Apellidos"/></cell>
-							<textbox sclass="input" width="200px" value="@bind(vm.apellido)"/>
+							<textbox sclass="input" width="200px" value="@bind(vm.apellido)" maxlength="60"/>
 						</hbox>
 						<hbox>
 							<cell align="left" width="100px" visible="@load(vm.visEstudiante)"><label sclass="text mandatory" value="Nivel"/></cell>
@@ -66,27 +66,32 @@
 								<comboitem label="Externo" value="E"/>
 							</combobox>
 							<cell align="left" width="100px" visible="@load(vm.visEmpresario)"><label sclass="text mandatory" value="Empresa"/></cell>
-							<textbox sclass="input" width="200px" value="@bind(vm.empresa)" visible="@load(vm.visEmpresario)"/>
+							<textbox sclass="input" width="200px" value="@bind(vm.empresa)" maxlength="60" visible="@load(vm.visEmpresario)"/>
 						</hbox>
 						<hbox visible="@load(vm.visEmpresario)">
 							<cell align="left" width="100px"><label sclass="text mandatory" value="Cargo"/></cell>
-							<textbox sclass="input" width="200px" value="@bind(vm.cargo)"/>
+							<textbox sclass="input" width="200px" value="@bind(vm.cargo)" maxlength="40"/>
 						</hbox>
 						<hbox>
 							<cell align="left" width="100px"><label sclass="text" value="Teléfono"/></cell>
-							<textbox sclass="input" width="200px" value="@bind(vm.telefono)"/>
+							<textbox sclass="input" width="200px" value="@bind(vm.telefono)" maxlength="10"/>
 						</hbox>
 						<hbox>
 							<cell align="left" width="100px"><label sclass="text" value="Celular"/></cell>
-							<textbox sclass="input" width="200px" value="@bind(vm.celular)"/>
+							<textbox sclass="input" width="200px" value="@bind(vm.celular)" maxlength="12"/>
 						</hbox>
 					</vbox>
 					<space spacing="70px"/>
 					<vbox>
 						<hbox>
-							<cell align="left" width="200px"><label sclass="text mandatory" value="Correo (Usuario)"/></cell>
-							<textbox sclass="input" width="275px" value="@bind(vm.correo)" onChange="@command('validarCorreo')"/>
+							<cell align="left" width="200px"><label sclass="text mandatory" value="Correo"/></cell>
+							<textbox sclass="input" width="275px" value="@bind(vm.correo)" onChange="@command('validarCorreo')" maxlength="60"/>
 							<image src="/assets/img/ok.png" visible="@load(vm.visCorreo)"/>
+						</hbox>
+						<hbox>
+							<cell align="left" width="200px"><label sclass="text mandatory" value="Usuario"/></cell>
+							<textbox sclass="input" width="275px" value="@bind(vm.usuario)" onChange="@command('validarUsuario')" maxlength="20"/>
+							<image src="/assets/img/ok.png" visible="@load(vm.visUsuario)"/>
 						</hbox>
 						<hbox>
 							<cell align="left" width="200px"><label sclass="text mandatory" value="Contraseña"/></cell>
@@ -115,8 +120,7 @@
 						</hbox>
 					</vbox>
 				</hbox>
-				<separator spacing="75px" visible="@load(vm.visEmpresario)"/>
-				<separator spacing="100px" visible="@load(not vm.visEmpresario)"/>
+				<separator spacing="75px" />
 				<hbox visible="@load(vm.visForm)">
 					<button label="Crear" mold="trendy" onClick="@command('crear')"/>
 					<space spacing="20px"/>

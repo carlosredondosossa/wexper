@@ -4,6 +4,7 @@ import org.zkoss.zkplus.spring.SpringUtil;
 
 import dao.IAdminDAO;
 import dao.IAsesorDAO;
+import dao.IAuthorityDAO;
 import dao.IEmpresarioDAO;
 import dao.IEstudianteDAO;
 import dao.IUserDAO;
@@ -19,6 +20,10 @@ public class ServiceLocator {
 
 	public static IUserDAO getUserDAO() {
 		return (IUserDAO) SpringUtil.getBean("userDAO", IUserDAO.class);
+	}
+	
+	public static IAuthorityDAO getAuthorityDAO() {
+		return (IAuthorityDAO) SpringUtil.getBean("authorityDAO", IAuthorityDAO.class);
 	}
 	
 	public static IEstudianteDAO getEstudianteDAO() {
