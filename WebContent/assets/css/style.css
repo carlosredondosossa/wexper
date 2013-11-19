@@ -88,6 +88,8 @@ body {
 	font-size: 1.10em;
 	font-weight: bold;
 	color: #FFFFFF;
+	background-color: rgba(36, 36, 36, 0.65);
+	border-radius: 5px;
 }
 
 .menu-action:hover {
@@ -95,7 +97,7 @@ body {
 }
 
 .menu-active {
-	background: #50B200;
+	background-color: rgba(80, 178, 0, 0.65);
 	border-radius: 5px;
 }
 
@@ -107,6 +109,42 @@ body {
 	padding: 50px 50px 50px 50px;
 	background-color: #FFFFFF;
 	border-radius: 10px 10px 0px 0px;
+}
+
+.submenu {
+	display: inline-block;
+	float: right;
+	padding: 3px;
+	margin-bottom: 10px;
+	background-color: #50B200;
+	border-radius: 5px;
+}
+
+.submenu-option {
+	
+	display: inline-block;
+	padding: 5px 10px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Archivo Narrow', sans-serif;
+	font-size: 1em;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #50B200;
+}
+
+.submenu-active {
+	display: inline-block;
+	padding: 5px 10px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Archivo Narrow', sans-serif;
+	font-size: 1em;
+	font-weight: bold;
+	color: #50B200;	
+	background-color: #FFFFFF;
+	border-radius: 5px;
+	padding: 5px 10px;
 }
 
 .title {
@@ -147,6 +185,12 @@ body {
 	font-size: 1.1em;
 	letter-spacing: 1px;
 	color: #50B200;
+}
+
+.line {
+	background-image: none;
+	background-color: #50B200;
+	width: 1px;
 }
 
 .mandatory:AFTER {

@@ -84,7 +84,7 @@ public class Registro {
 	@Command
 	@NotifyChange("visCorreo")
 	public void validarCorreo() {
-		visCorreo = (! Validator.validarCorreo(correo)) || ! validarDuplicadosCorreo() ? false : true;
+		visCorreo = (! Validator.validarCorreo(correo.toLowerCase())) || ! validarDuplicadosCorreo() ? false : true;
 	}
 	
 	@Command
@@ -117,7 +117,7 @@ public class Registro {
 			return;
 		}
 		
-		if(! Validator.validarCorreo(correo)){
+		if(! Validator.validarCorreo(correo.toLowerCase())){
 			msg = "El correo ingresado no es válido.";
 			return;
 		}
@@ -205,7 +205,7 @@ public class Registro {
 	
 	private boolean validarDuplicadosCorreo() {
 		boolean unico = false;
-		if(ServiceLocator.getUserDAO().getByCorreo(correo) == null) { unico = true; }
+		if(ServiceLocator.getUserDAO().getByCorreo(correo.toLowerCase()) == null) { unico = true; }
 		return unico;
 	}
 	
@@ -251,7 +251,7 @@ public class Registro {
 	
 	private User obtenerDatosUser() {
 		User user = new User();
-		user.setCorreo(correo);
+		user.setCorreo(correo.toLowerCase());
 		user.setUsername(usuario);
 		user.setPassword(Validator.generarPwd(pwd));
 		user.setEnabled(false);

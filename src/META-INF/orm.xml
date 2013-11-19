@@ -8,5 +8,7 @@
 	<entity class="modelo.Asesor" />
 	<entity class="modelo.Empresario" />
 	<entity class="modelo.Admin" />
+	
+	<entity class="modelo.Oferta" />
 
 </entity-mappings>

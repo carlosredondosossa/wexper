@@ -1,6 +1,6 @@
 <div sclass="header" >
 	<div sclass="user">
-		<a href="#" sclass="header-label" ><attribute name="onCreate"><![CDATA[
+		<a href="/settingSession.do" sclass="header-label" ><attribute name="onCreate"><![CDATA[
 			try{ self.setLabel(session.getAttribute("FULL_NAME").toString()); }catch(Exception e){}
 		]]></attribute></a>
 	</div>

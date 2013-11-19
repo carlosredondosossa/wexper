@@ -12,14 +12,14 @@
 		
 		<include src="/pages/includes/sessionData.zul" />
 	
-		<div sclass="wrapper" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vista.home.HomeES')">
+		<div sclass="wrapper" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vista.home.HomeEM')">
 		
 			<div sclass="action" >
 				<div sclass="logo" ><image src="/assets/img/logo.png" /></div>
 				<div sclass="menu" >
 					<hbox sclass="menu-group" >
-						<a href="/ofertasES.do" label="Ofertas" sclass="menu-action" />
-						<a href="/documentosES.do" label="Documentos" sclass="menu-action" />
+						<a href="/ofertasEM.do" label="Ofertas" sclass="menu-action" />
+						<a href="/documentosEM.do" label="Documentos" sclass="menu-action" />
 					</hbox>
 				</div>
 			</div>
@@ -35,11 +35,15 @@
 					<!-- DATOS PERSONALES -->
 					<vbox>
 						<label sclass="text" value="Modifica tus datos:" />
-						<separator spacing="20px" />
+						<separator spacing="10px" />
 						
 						<hbox>
-							<cell align="left" width="100px"><label value="Nivel"/></cell>
-							<textbox sclass="input" readonly="true" width="220px" value="@load(vm.nivel)" />
+							<cell align="left" width="100px"><label sclass="text" value="Empresa"/></cell>
+							<textbox sclass="input" readonly="true" width="220px" value="@load(vm.empresa)" />
+						</hbox>
+						<hbox>
+							<cell align="left" width="100px"><label sclass="text mandatory" value="Cargo"/></cell>
+							<textbox sclass="input" width="220px" value="@load(vm.cargo)" maxlength="40"/>
 						</hbox>
 						<hbox>
 							<cell align="left" width="100px"><label sclass="text mandatory" value="Correo"/></cell>
@@ -64,7 +68,7 @@
 					<!-- CAMBIO DE CONTRASEÑA -->
 					<vbox>
 						<label sclass="text" value="Cambia tu contraseña:" />
-						<separator spacing="20px" />
+						<separator spacing="10px" />
 						
 						<hbox>
 							<cell align="left" width="150px"><label sclass="text mandatory" value="Actual contraseña"/></cell>
@@ -80,7 +84,7 @@
 							<image src="/assets/img/ok.png" visible="@load(vm.visPwd)"/>
 						</hbox>
 						
-						<separator spacing="30px" />
+						<separator spacing="63px" />
 						<cell align="right"><button label="Cambiar contraseña" mold="trendy" onClick="@command('changePwd')"/></cell>
 					</vbox>
 				</hbox>

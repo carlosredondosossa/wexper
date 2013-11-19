@@ -12,14 +12,13 @@
 		
 		<include src="/pages/includes/sessionData.zul" />
 	
-		<div sclass="wrapper" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vista.home.HomeES')">
+		<div sclass="wrapper" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vista.home.HomeAE')">
 		
 			<div sclass="action" >
 				<div sclass="logo" ><image src="/assets/img/logo.png" /></div>
 				<div sclass="menu" >
 					<hbox sclass="menu-group" >
-						<a href="/ofertasES.do" label="Ofertas" sclass="menu-action" />
-						<a href="/documentosES.do" label="Documentos" sclass="menu-action" />
+						<a href="/documentosAE.do" label="Documentos" sclass="menu-action" />
 					</hbox>
 				</div>
 			</div>
@@ -38,8 +37,8 @@
 						<separator spacing="20px" />
 						
 						<hbox>
-							<cell align="left" width="100px"><label value="Nivel"/></cell>
-							<textbox sclass="input" readonly="true" width="220px" value="@load(vm.nivel)" />
+							<cell align="left" width="100px"><label value="Tipo"/></cell>
+							<textbox sclass="input" readonly="true" width="220px" value="@load(vm.tipo)" />
 						</hbox>
 						<hbox>
 							<cell align="left" width="100px"><label sclass="text mandatory" value="Correo"/></cell>

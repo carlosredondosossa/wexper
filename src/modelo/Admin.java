@@ -37,9 +37,6 @@ public class Admin implements Serializable {
 	@Column(name = "CELULAR", length=12) 
 	private String celular;
 	
-	@Column(name = "EMPRESA", nullable=false, length=60) 
-	private String empresa;
-	
 	@Column(name = "CARGO", nullable=false, length=40) 
 	private String cargo;
 	
@@ -100,16 +97,6 @@ public class Admin implements Serializable {
 
 	public void setCelular(String celular) {
 		this.celular = celular;
-	}
-
-
-	public String getEmpresa() {
-		return empresa;
-	}
-
-
-	public void setEmpresa(String empresa) {
-		this.empresa = empresa;
 	}
 
 

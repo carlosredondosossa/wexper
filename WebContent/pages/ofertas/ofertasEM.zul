@@ -1,0 +1,113 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<?page title="WEXPER" contentType="text/html;charset=UTF-8"?>
+
+<?link href="http://fonts.googleapis.com/css?family=Archivo+Narrow:400,700" rel="stylesheet" type="text/css" ?>
+<?link type="text/css" rel="stylesheet" href="/assets/css/style.css" ?>
+
+<zk>
+	
+	<div sclass="page" >
+		<custom-attributes org.zkoss.zul.image.preload="true" />
+		
+		<include src="/pages/includes/sessionData.zul" />
+	
+		<div sclass="wrapper" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vista.ofertas.OfertasEM')">
+		
+			<div sclass="action" >
+				<div sclass="logo" ><image src="/assets/img/logo.png" /></div>
+				<div sclass="menu" >
+					<hbox sclass="menu-group" >
+						<a href="/ofertasEM.do" label="Ofertas" sclass="menu-action menu-active" />
+						<a href="/documentosEM.do" label="Documentos" sclass="menu-action" />
+					</hbox>
+				</div>
+			</div>
+		
+			<div sclass="body"  height="350px">
+			
+				<div sclass="submenu">
+					<a sclass="@load(vm.sclassSub1)" label="Ofertas registradas" onSelect="@command('selectMenu(1)')"/>
+					<a sclass="@load(vm.sclassSub2)" label="Nueva oferta" />
+					<a sclass="@load(vm.sclassSub3)" label="Hojas de vida" />
+				</div>
+				
+				<div style="clear: right;">
+					<label sclass="msg" value="jahsj" />
+					<image style="float: right;" src="/assets/img/exclamation.png" />
+				</div>
+				
+				<!-- Lista de ofertas registradas -->
+				<div visible="@load(vm.form1)">
+<!-- 					<div> -->
+<!-- 						<label sclass="msg" visible="@load(not empty vm.msg)" value="@load(vm.msg)" /> -->
+<!-- 						<image style="float: right;" visible="@load(not empty vm.msg)" src="/assets/img/exclamation.png" /> -->
+<!-- 					</div> -->
+					<label sclass="title" value="Ofertas creadas" />
+					<label sclass="text" value="Sus ofertas actuales." />
+					<separator spacing="20px" />
+<!-- 						<listbox mold="paging" sizedByContent="true" pageSize="8" onSelect="@command('verOferta')"  -->
+<!-- 						pagingPosition="bottom" model="@bind(vm.listaTipoTareaInterna)" width="1020px" -->
+<!-- 						emptyMessage="${c:l('noData')}" selectedItem="@bind(vm.selTipoTareaInterna)" > -->
+<!-- 						<auxhead> -->
+<!-- 							<auxheader image="/resources/images/funnel.png"> -->
+<!-- 								<textbox instant="true" value="@bind(vm.filterNombre)" -->
+<!-- 									width="90%" onChange="@command('filtrar')" /> -->
+<!-- 							</auxheader> -->
+<!-- 							<auxheader image="/resources/images/funnel.png"> -->
+<!-- 								<listbox width="90%" mold="select" model="@bind(vm.listaFilterEstados)" -->
+<!-- 									selectedItem="@bind(vm.filterEstado)" onSelect="@command('filtrar')" > -->
+<!-- 									<template name="model"> -->
+<!-- 										<listitem label="@bind(each)" value="@bind(each)" /> -->
+<!-- 									</template> -->
+<!-- 								</listbox> -->
+<!-- 							</auxheader> -->
+<!-- 						</auxhead> -->
+<!-- 						<listhead sclass="category-center"> -->
+<!-- 							<listheader label="${c:l('designacion.lista.nombre') }" -->
+<!-- 								width="50%" /> -->
+<!-- 							<listheader label="${c:l('designacion.lista.estado')} " -->
+<!-- 								width="50%" /> -->
+<!-- 						</listhead> -->
+<!-- 						<template name="model" var="r"> -->
+<!-- 							<listitem> -->
+<!-- 								<listcell label="@load(r.nombre)" /> -->
+<!-- 								<listcell> -->
+<!-- 									<image src="/resources/images/confirm_16.png" visible="@bind(r.estado)"/> -->
+<!-- 									<image src="/resources/images/cancel_16.png" visible="@bind(not r.estado)"/> -->
+<!-- 								</listcell> -->
+<!-- 							</listitem> -->
+<!-- 						</template> -->
+<!-- 					</listbox> -->
+				</div>
+				
+				<!-- Formulario de nuevas ofertas -->
+				<div visible="@load(vm.form2)">
+					<label sclass="title" value="Ofertas 2222" />
+					<label sclass="text" value="Sus ofertas actuales." />
+					
+				</div>
+				
+				<!-- Descarga de Hojas de vida -->
+				<div visible="@load(vm.form3)">
+					<label sclass="title" value="Ofertas 333333" />
+					<label sclass="text" value="Sus ofertas actuales." />
+				
+				</div>
+				
+			</div>
+		
+			<div sclass="footer" >
+				<div sclass="footer-logo" ><image src="/assets/img/logo.png" /></div>
+			</div>
+
+			<div sclass="copyright" >
+				<label sclass="copyright-bold" value="Copyright (c) 2013 " />
+				<label sclass="copyright-text" value="Carlos Andrés Redondo Sossa. All rights reserved." />
+			</div>
+
+		</div>
+	
+	</div>
+
+</zk>

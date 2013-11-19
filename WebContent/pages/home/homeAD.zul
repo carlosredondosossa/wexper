@@ -12,14 +12,15 @@
 		
 		<include src="/pages/includes/sessionData.zul" />
 	
-		<div sclass="wrapper" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vista.home.HomeES')">
+		<div sclass="wrapper" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vista.home.HomeAD')">
 		
 			<div sclass="action" >
 				<div sclass="logo" ><image src="/assets/img/logo.png" /></div>
 				<div sclass="menu" >
 					<hbox sclass="menu-group" >
-						<a href="/ofertasES.do" label="Ofertas" sclass="menu-action" />
-						<a href="/documentosES.do" label="Documentos" sclass="menu-action" />
+						<a href="/ofertasAD.do" label="Ofertas" sclass="menu-action" />
+						<a href="/documentosAD.do" label="Documentos" sclass="menu-action" />
+						<a href="/reportesAD.do" label="Reportes" sclass="menu-action" />
 					</hbox>
 				</div>
 			</div>
@@ -38,13 +39,13 @@
 						<separator spacing="20px" />
 						
 						<hbox>
-							<cell align="left" width="100px"><label value="Nivel"/></cell>
-							<textbox sclass="input" readonly="true" width="220px" value="@load(vm.nivel)" />
-						</hbox>
-						<hbox>
 							<cell align="left" width="100px"><label sclass="text mandatory" value="Correo"/></cell>
 							<textbox sclass="input" width="220px" value="@bind(vm.correo)" onChange="@command('validarCorreo')" instant="true" maxlength="60"/>
 							<image src="/assets/img/ok.png" visible="@load(vm.visCorreo)"/>
+						</hbox>
+						<hbox>
+							<cell align="left" width="100px"><label value="Nivel"/></cell>
+							<textbox sclass="input" width="220px" value="@load(vm.cargo)" maxlength="40"/>
 						</hbox>
 						<hbox>
 							<cell align="left" width="100px"><label sclass="text" value="Teléfono"/></cell>
