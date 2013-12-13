@@ -1,23 +1,31 @@
 package modelo;
 
+import static javax.persistence.GenerationType.SEQUENCE;
+
 import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="oferta")
+@Table(name="OFERTA")
+@SequenceGenerator(name = "OFERTA_SEQ", sequenceName = "OFERTA_SEQ", initialValue = 1, allocationSize = 1)
 public class Oferta implements Serializable {
 	
 	private static final long serialVersionUID = 8087224495827756769L;
 
 	@Id
 	@Column(name = "id", nullable=false)
+	@GeneratedValue(strategy = SEQUENCE, generator="OFERTA_SEQ")
 	private Integer id;
 	
 	@Column(name = "fecha", nullable=false)
@@ -47,6 +55,10 @@ public class Oferta implements Serializable {
 	
 	@Column(name = "estado")
 	private boolean estado;
+	
+	@ManyToOne
+	@JoinColumn(name="empleador")
+	private Empresario empleador;
 	
 
 	public Integer getId() {
@@ -127,6 +139,14 @@ public class Oferta implements Serializable {
 
 	public void setEstado(boolean estado) {
 		this.estado = estado;
+	}
+
+	public Empresario getEmpleador() {
+		return empleador;
+	}
+
+	public void setEmpleador(Empresario empleador) {
+		this.empleador = empleador;
 	}
 	
 }

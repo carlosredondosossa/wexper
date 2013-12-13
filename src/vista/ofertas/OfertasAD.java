@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import locator.ServiceLocator;
+import modelo.Admin;
 import modelo.Empresario;
 import modelo.Oferta;
 
@@ -21,13 +22,13 @@ import org.zkoss.bind.annotation.NotifyChange;
 import util.Converter;
 
 @Controller
-public class OfertasEM {
+public class OfertasAD {
 	
-	@RequestMapping(value = "/ofertasEM.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/ofertasAD.do", method = RequestMethod.GET)
 	public String requestMappingServicios() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if ( authentication != null && !(authentication instanceof AnonymousAuthenticationToken) && authentication.isAuthenticated() )
-			return "ofertas/ofertasEM";
+			return "ofertas/ofertasAD";
 		else
 			return "redirect:/login.do";
 	}
@@ -45,7 +46,7 @@ public class OfertasEM {
 	private boolean form3;
 	private boolean form4;
 	
-	private Empresario usuario;
+	private Admin usuario;
 	
 	private ArrayList<Oferta> listaOfertas;
 	private Oferta selOferta;
@@ -53,7 +54,7 @@ public class OfertasEM {
 	
 	@Init
 	public void init(){
-		usuario = (Empresario) ServiceLocator.getPerfil("EM");
+		usuario = (Admin) ServiceLocator.getPerfil("AD");
 		selectMenu("m1");
 	}
 
@@ -72,7 +73,7 @@ public class OfertasEM {
 		form4 = false;
 		
 		if (form1) {
-			listaOfertas = ServiceLocator.getOfertaDAO().buscarByEmpresario(usuario);
+			listaOfertas = ServiceLocator.getOfertaDAO().buscarAll();
 			selOferta = new Oferta();
 		} else if (form2) {
 			selOferta = new Oferta();
@@ -90,8 +91,6 @@ public class OfertasEM {
 			return;
 		}
 		
-		selOferta.setEmpleador(usuario);
-		selOferta.setEmpresa(usuario.getEmpresa());
 		selOferta.setEstado(true);
 		selOferta.setFecha(Converter.formatDate(new Date()));
 		
@@ -102,6 +101,7 @@ public class OfertasEM {
 	
 	private boolean validarCrear() {
 		boolean exit = false;
+		exit = selOferta.getEmpresa() == null || selOferta.getEmpresa().isEmpty() ? true : exit;
 		exit = selOferta.getCargo() == null || selOferta.getCargo().isEmpty() ? true : exit;
 		exit = selOferta.getContacto() == null || selOferta.getContacto().isEmpty() ? true : exit;
 		exit = selOferta.getCorreo() == null || selOferta.getCorreo().isEmpty() ? true : exit;

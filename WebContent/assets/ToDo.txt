@@ -1,2 +1,4 @@
 -> File: WEB_INF\zk.xml
 	- Crear el archivo para la configuracion del <error-page>
+	
+-> Ofertas validar que se eliminen las postulaciones al eliminar una oferta.

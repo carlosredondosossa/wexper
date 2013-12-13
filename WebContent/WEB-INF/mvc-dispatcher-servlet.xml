@@ -72,5 +72,8 @@
 	
 	<!-- ADMINS -->
 	<bean name="adminDAO" class="dao.impl.AdminDAO"></bean>
+	
+	<!-- OFERTA -->
+	<bean name="ofertaDAO" class="dao.impl.OfertaDAO"></bean>
 
 </beans>

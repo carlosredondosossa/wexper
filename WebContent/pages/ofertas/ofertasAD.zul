@@ -12,14 +12,15 @@
 		
 		<include src="/pages/includes/sessionData.zul" />
 	
-		<div sclass="wrapper" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vista.ofertas.OfertasEM')">
+		<div sclass="wrapper" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vista.ofertas.OfertasAD')">
 		
 			<div sclass="action" >
 				<div sclass="logo" ><image src="/assets/img/logo.png" /></div>
 				<div sclass="menu" >
 					<hbox sclass="menu-group" >
-						<a href="/ofertasEM.do" label="Ofertas" sclass="menu-action menu-active" />
-						<a href="/documentosEM.do" label="Documentos" sclass="menu-action" />
+						<a href="/ofertasAD.do" label="Ofertas" sclass="menu-action menu-active" />
+						<a href="/documentosAD.do" label="Documentos" sclass="menu-action" />
+						<a href="/reportesAD.do" label="Reportes" sclass="menu-action" />
 					</hbox>
 				</div>
 			</div>
@@ -81,13 +82,17 @@
 							</hbox>
 							<hbox>
 								<cell align="left" width="120px"><label sclass="text" value="Funciones"/></cell>
-								<textbox sclass="input" width="280px" value="@bind(vm.selOferta.funciones)" multiline="true" rows="5" style="resize: none"/>
+								<textbox sclass="input" width="280px" value="@bind(vm.selOferta.funciones)" multiline="true" rows="6" style="resize: none"/>
 							</hbox>
 						</vbox>
 						
 						<space bar="true" height="100%" sclass="line"/>
 						
 						<vbox>
+							<hbox>
+								<cell align="left" width="120px"><label sclass="text mandatory" value="Empresa"/></cell>
+								<textbox sclass="input" width="280px" value="@bind(vm.selOferta.empresa)" />
+							</hbox>
 							<hbox>
 								<cell align="left" width="120px"><label sclass="text mandatory" value="Contacto"/></cell>
 								<textbox sclass="input" width="280px" value="@bind(vm.selOferta.contacto)" />
@@ -128,13 +133,17 @@
 							</hbox>
 							<hbox>
 								<cell align="left" width="120px"><label sclass="text" value="Funciones"/></cell>
-								<textbox sclass="input" width="280px" value="@bind(vm.selOferta.funciones)" multiline="true" rows="5" style="resize: none"/>
+								<textbox sclass="input" width="280px" value="@bind(vm.selOferta.funciones)" multiline="true" rows="6" style="resize: none"/>
 							</hbox>
 						</vbox>
 						
 						<space bar="true" height="100%" sclass="line"/>
 						
 						<vbox>
+							<hbox>
+								<cell align="left" width="120px"><label sclass="text mandatory" value="Empresa"/></cell>
+								<textbox sclass="input" width="280px" value="@bind(vm.selOferta.empresa)" />
+							</hbox>
 							<hbox>
 								<cell align="left" width="120px"><label sclass="text mandatory" value="Contacto"/></cell>
 								<textbox sclass="input" width="280px" value="@bind(vm.selOferta.contacto)" />

@@ -38,7 +38,7 @@
 						<separator spacing="20px" />
 						
 						<hbox>
-							<cell align="left" width="100px"><label value="Nivel"/></cell>
+							<cell align="left" width="100px"><label sclass="text" value="Nivel"/></cell>
 							<textbox sclass="input" readonly="true" width="220px" value="@load(vm.nivel)" />
 						</hbox>
 						<hbox>

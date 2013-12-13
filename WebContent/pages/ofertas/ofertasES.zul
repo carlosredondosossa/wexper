@@ -1,0 +1,156 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<?page title="WEXPER" contentType="text/html;charset=UTF-8"?>
+
+<?link href="http://fonts.googleapis.com/css?family=Archivo+Narrow:400,700" rel="stylesheet" type="text/css" ?>
+<?link type="text/css" rel="stylesheet" href="/assets/css/style.css" ?>
+
+<zk>
+	
+	<div sclass="page" >
+		<custom-attributes org.zkoss.zul.image.preload="true" />
+		
+		<include src="/pages/includes/sessionData.zul" />
+	
+		<div sclass="wrapper" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vista.ofertas.OfertasES')">
+		
+			<div sclass="action" >
+				<div sclass="logo" ><image src="/assets/img/logo.png" /></div>
+				<div sclass="menu" >
+					<hbox sclass="menu-group" >
+						<a href="/ofertasES.do" label="Ofertas" sclass="menu-action menu-active" />
+						<a href="/documentosES.do" label="Documentos" sclass="menu-action" />
+					</hbox>
+				</div>
+			</div>
+		
+			<div sclass="body"  height="400px">
+			
+				<div sclass="submenu">
+					<a id="m1" sclass="@load(vm.sclassSub1)" label="Ofertas registradas" onClick="@command('selectMenu', pos = self.id)"/>
+					<label sclass="submenu-bar" value="."/>
+					<a id="m2" sclass="@load(vm.sclassSub2)" label="Nueva oferta" onClick="@command('selectMenu', pos = self.id)" />
+					<label sclass="submenu-bar" value="."/>
+					<a id="m3" sclass="@load(vm.sclassSub3)" label="Hoja de vida" onClick="@command('selectMenu', pos = self.id)"/>
+				</div>
+				
+				<div sclass="submenu-msg" style="clear: right;" visible="@load(not empty vm.msg)">
+					<label sclass="msg" value="@load(vm.msg)" />
+					<image style="float: right;" src="/assets/img/exclamation.png" />
+				</div>
+				
+				<!-- ??????????? (LISTA DE OFERTAS) -->
+				<div visible="@load(vm.form1)">
+<!-- 					<label sclass="title" value="Ofertas creadas" /> -->
+<!-- 					<label sclass="text" value="Sus ofertas actuales." /> -->
+<!-- 					<separator spacing="20px" /> -->
+<!-- 						<listbox mold="paging" sizedByContent="true" pageSize="8" onSelect="@command('verOferta')"  -->
+<!-- 						pagingPosition="bottom" model="@bind(vm.listaOfertas)" width="100%" -->
+<!-- 						emptyMessage="No se enontraron resultados." selectedItem="@bind(vm.selOferta)" > -->
+<!-- 						<listhead> -->
+<!-- 							<listheader label="Fecha" width="20%" /> -->
+<!-- 							<listheader label="Cargo" width="50%" /> -->
+<!-- 							<listheader label="Salario" width="30%" /> -->
+<!-- 							<listheader label="Estado" width="30%" /> -->
+<!-- 						</listhead> -->
+<!-- 						<template name="model" var="r"> -->
+<!-- 							<listitem> -->
+<!-- 								<listcell label="@load(r.fecha)" /> -->
+<!-- 								<listcell label="@load(r.cargo)" /> -->
+<!-- 								<listcell label="@load(r.salario)" /> -->
+<!-- 								<listcell> -->
+<!-- 									<label value="Activo" visible="@load(r.estado)"/> -->
+<!-- 									<label value="Inactivo" visible="@load(not r.estado)"/> -->
+<!-- 								</listcell> -->
+<!-- 							</listitem> -->
+<!-- 						</template> -->
+<!-- 					</listbox> -->
+				</div>
+				
+				<!-- ????????? (APLICAR A OFERTAS) -->
+<!-- 				<div visible="@load(vm.form4)"> -->
+<!-- 					<label sclass="title" value="Actualizar ofertas" /> -->
+<!-- 					<label sclass="text" value="Modifique la oferta laboral." /> -->
+<!-- 					<separator spacing="40px" /> -->
+					
+<!-- 					<hbox widths="450px, 50px, 400px"> -->
+<!-- 						<vbox>							 -->
+<!-- 							<hbox> -->
+<!-- 								<cell align="left" width="120px"><label sclass="text mandatory" value="Cargo"/></cell> -->
+<!-- 								<textbox sclass="input" width="280px" value="@bind(vm.selOferta.cargo)" /> -->
+<!-- 							</hbox> -->
+<!-- 							<hbox> -->
+<!-- 								<cell align="left" width="120px"><label sclass="text" value="Funciones"/></cell> -->
+<!-- 								<textbox sclass="input" width="280px" value="@bind(vm.selOferta.funciones)" multiline="true" rows="5" style="resize: none"/> -->
+<!-- 							</hbox> -->
+<!-- 						</vbox> -->
+						
+<!-- 						<space bar="true" height="100%" sclass="line"/> -->
+						
+<!-- 						<vbox> -->
+<!-- 							<hbox> -->
+<!-- 								<cell align="left" width="120px"><label sclass="text mandatory" value="Contacto"/></cell> -->
+<!-- 								<textbox sclass="input" width="280px" value="@bind(vm.selOferta.contacto)" /> -->
+<!-- 							</hbox> -->
+<!-- 							<hbox> -->
+<!-- 								<cell align="left" width="120px"><label sclass="text mandatory" value="Correo"/></cell> -->
+<!-- 								<textbox sclass="input" width="280px" value="@bind(vm.selOferta.correo)" /> -->
+<!-- 							</hbox> -->
+<!-- 							<hbox> -->
+<!-- 								<cell align="left" width="120px"><label sclass="text mandatory" value="Telefono"/></cell> -->
+<!-- 								<textbox sclass="input" width="280px" value="@bind(vm.selOferta.telefono)" /> -->
+<!-- 							</hbox> -->
+<!-- 							<hbox> -->
+<!-- 								<cell align="left" width="120px"><label sclass="text" value="Salario"/></cell> -->
+<!-- 								<intbox sclass="input" width="280px" value="@bind(vm.selOferta.salario)" /> -->
+<!-- 							</hbox> -->
+<!-- 						</vbox> -->
+<!-- 					</hbox> -->
+<!-- 					<separator spacing="60px" /> -->
+<!-- 					<cell align="right"> -->
+<!-- 						<button label="Modificar Registro" mold="trendy" onClick="@command('modificar')"/> -->
+<!-- 						<space spacing="35px" /> -->
+<!-- 						<button label="Cancelar" mold="trendy" onClick="@command('cancelar')"/> -->
+<!-- 					</cell> -->
+<!-- 				</div> -->
+				
+				<!-- SUBIR HOJA DE VIDA -->
+				<div visible="@load(vm.form3)">
+					<label sclass="title" value="Hoja de Vida" />
+					<label sclass="text" value="Adjunte el documento y la foto de su hoja de vida." />
+					<separator spacing="30px" />
+					<hbox widths="450px, 50px, 400px">
+					<vbox>
+						<separator spacing="25px"/>
+						<button width="130px" mold="trendy" label="Cargar archivo" upload="true" onUpload="@command('cargarDoc', event = event.getMedia())" />
+						<textbox sclass="input" width="380px" value="@bind(vm.dirDoc)" readonly="true"/>
+					    <separator spacing="25px"/>
+					    <button width="130px" mold="trendy" label="Cargar Foto" upload="true" onUpload="@command('cargarFoto', event = event.getMedia())" />
+					    <textbox sclass="input" width="380px" value="@bind(vm.dirFoto)" readonly="true"/>
+					    <separator spacing="45px"/>
+					    <cell width="400px" align="right"><button width="130px" mold="trendy" label="guardar" onClick="@command('guardarHV')" /></cell>
+					</vbox>
+					
+					<space bar="true" height="100%" sclass="line"/>
+						<vlayout width="400px" height="300px" style="overflow:auto" ><box width="100%" height="300px" align="center" pack="center" style="overflow:auto">
+					    	<image content="@load(vm.foto)" />
+					    </box></vlayout>
+					</hbox>
+				</div>
+				
+			</div>
+		
+			<div sclass="footer" >
+				<div sclass="footer-logo" ><image src="/assets/img/logo.png" /></div>
+			</div>
+
+			<div sclass="copyright" >
+				<label sclass="copyright-bold" value="Copyright (c) 2013 " />
+				<label sclass="copyright-text" value="Carlos Andrés Redondo Sossa. All rights reserved." />
+			</div>
+
+		</div>
+	
+	</div>
+
+</zk>
